@@ -14,7 +14,7 @@ function getRandomNumber(x) {
 
 
 const TRACKS = [
-  "https://www.youtube.com/watch?v=-GPkqoQz2vo&app=desktop",
+  "https://www.youtube.com/watch?v=yA1boPCPwbY",
   "https://www.youtube.com/watch?v=hR_ijUsHpuE",
   "https://www.youtube.com/watch?v=BJWoFagy4Bc",
   "https://www.youtube.com/watch?v=sFrNsSnk8GM",
@@ -28,6 +28,7 @@ const AudioGuide = ({url, playing}) => (
               url={url}
               pip={false}
               height={0}
+              loop={true}
               width={0}
               playing={playing}
   />
@@ -51,14 +52,15 @@ class App extends React.Component {
       return (
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Bienvenue sur le Blindtest</h1>
+            <p className="App-logo" >H </p>
           </header>
           <div>
           {   TRACKS.map((url, index) => <AudioGuide url={url} playing={this.state.play[index]} />)}
+          </div>
+          <div className="App-player">
           {
             TRACKS.map((url,index) =>
-              <button className="App-player" onClick={()=>this.togglePlay(index)}>
+              <button className="App-audioguide-sample" onClick={()=>this.togglePlay(index)}>
                  {index + 1}
                </button>
             )}

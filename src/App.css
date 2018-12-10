@@ -3,25 +3,28 @@
 }
 
 .App-logo {
+  font-size: 30px;
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 30px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.App-player {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin : 30px;
 }
 
-.App-player{
-  margin: 10px;
-  width: 30px;
-  height: 30px;
+.App-audioguide-sample{
+  margin: 30px;
+  width: 80px;
+  height: 80px;
 }
 
 .App-buttons {
