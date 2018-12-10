@@ -14,11 +14,14 @@ function getRandomNumber(x) {
 
 
 const TRACKS = [
-  "https://www.youtube.com/watch?v=yA1boPCPwbY",
-  "https://www.youtube.com/watch?v=hR_ijUsHpuE",
-  "https://www.youtube.com/watch?v=BJWoFagy4Bc",
-  "https://www.youtube.com/watch?v=sFrNsSnk8GM",
-  "https://www.youtube.com/watch?v=NrgcRvBJYBE"
+  "https://soundcloud.com/gulistan-yalvac-1/maitre-gims-sapes-comme-jamais-ft-niska",
+  "https://soundcloud.com/bengale/je-danse-le-mia-iam-cover",
+  "https://soundcloud.com/milalin-1/romeo-et-juliette-les-rois-du-monde-live-1",
+  "https://soundcloud.com/justintimberlake/rock-your-body",
+  "https://soundcloud.com/julien-clerc-official/ma-pr-f-rence",
+  "https://soundcloud.com/henri-salvador/chanson-surrealiste-i",
+  "https://soundcloud.com/alain-bashung/osez-jos-phine-1",
+  "https://soundcloud.com/whatsacopyright/polo-pan-nana-2"
 ];
 
 const N_TRACKS = TRACKS.length;
