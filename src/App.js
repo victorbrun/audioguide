@@ -1,103 +1,70 @@
 /*global swal*/
 
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import loading from "./loading.svg";
 import "./App.css";
-import Sound from "react-sound";
+import logo from "./logo.svg";
 import Button from "./Button";
+import ReactPlayer from 'react-player'
 
-const apiToken =
-  "BQBrrDazdrA3BBFoF915cemIsxLosqPqsipZzYVqcDntg3-GsFNCbZSPixJJ2NHddtLkRZpL2e7Js22LeuAKRnK82lQI0ubCmXy3bvKXleqR1_0wOwvghIMACOWGpdqKuK50wLx1h-mk42zUXN_WZxra-ZfRWoT_E5bAGlsgLi4q";
-
-function shuffleArray(array) {
-  let counter = array.length;
-
-  while (counter > 0) {
-    let index = getRandomNumber(counter);
-    counter--;
-    let temp = array[counter];
-    array[counter] = array[index];
-    array[index] = temp;
-  }
-
-  return array;
-}
 
 /* Return a random number between 0 included and x excluded */
 function getRandomNumber(x) {
   return Math.floor(Math.random() * x);
 }
 
-class AlbumCover extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    return <img src={this.props.track.album.images[0].url} />;
-  }
-}
+const TRACKS = [
+  "https://www.youtube.com/watch?v=-GPkqoQz2vo&app=desktop",
+  "https://www.youtube.com/watch?v=hR_ijUsHpuE",
+  "https://www.youtube.com/watch?v=BJWoFagy4Bc",
+  "https://www.youtube.com/watch?v=sFrNsSnk8GM",
+  "https://www.youtube.com/watch?v=NrgcRvBJYBE"
+];
 
-class App extends Component {
+const N_TRACKS = TRACKS.length;
+
+const AudioGuide = ({url, playing}) => (
+  <ReactPlayer
+              url={url}
+              pip={false}
+              height={0}
+              width={0}
+              playing={playing}
+  />
+);
+
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      text: "Ceci est un bruit blanc",
-      songsLoaded: false,
-      tracks: {}
+      play: [false,false],
     };
   }
 
-  componentDidMount() {
-    this.setState({ text: "Musique play " });
-    fetch("https://api.spotify.com/v1/me/tracks", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + apiToken
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Réponse reçue ! Voilà ce que j'ai reçu : ", data);
-        this.setState({ tracks: data.items });
-
-        this.setState({
-          songsLoaded: true
-        });
-      });
-  }
+  togglePlay = (i) => {
+    var playBools = new Array(N_TRACKS).fill(false);
+    playBools[i] = !this.state.play[i];
+    this.setState({ play: playBools });
+  };
 
   render() {
-    if (!this.state.songsLoaded) {
-      return (
-        <div className="App">
-          <div className="App">
-            <img src={loading} alt="loading" />
-          </div>
-        </div>
-      );
-    } else {
-      const track1 = this.state.tracks[0].track;
-      console.log(this.state.tracks[0].track.name);
       return (
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Bienvenue sur le Blindtest</h1>
           </header>
-          <div className="App-images">
-            <p>{this.state.tracks[0].track.name}</p>
-            <AlbumCover track={this.state.tracks[0].track} />
-            <Sound
-              url={this.state.tracks[0].track.preview_url}
-              playStatus={Sound.status.PLAYING}
-            />
+          <div>
+          {   TRACKS.map((url, index) => <AudioGuide url={url} playing={this.state.play[index]} />)}
+          {
+            TRACKS.map((url,index) =>
+              <button className="App-player" onClick={()=>this.togglePlay(index)}>
+                 {index + 1}
+               </button>
+            )}
           </div>
-          <div className="App-buttons" />
         </div>
       );
-    }
   }
 }
 

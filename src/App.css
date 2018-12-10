@@ -18,8 +18,10 @@
   font-size: 1.5em;
 }
 
-.App-images {
-  margin-top: 20px;
+.App-player{
+  margin: 10px;
+  width: 30px;
+  height: 30px;
 }
 
 .App-buttons {

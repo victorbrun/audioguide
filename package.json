@@ -6,6 +6,7 @@
     "gh-pages": "^1.0.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
+    "react-player": "^1.7.1",
     "react-scripts": "^2.0.5",
     "react-sound": "^0.8.0"
   },
