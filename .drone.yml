@@ -3,12 +3,8 @@ name: default
 
 steps:
   - name: frontend
-    image: audioguide
+    image: node
     commands:
       - npm install
       - npm run build
       - npm test
-    when:
-      event:
-        - push
-        - pull-request
