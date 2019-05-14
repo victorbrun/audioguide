@@ -1,0 +1,14 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: frontend
+    image: audioguide
+    commands:
+      - npm install
+      - npm run build
+      - npm test
+    when:
+      event:
+        - push
+        - pull-request
